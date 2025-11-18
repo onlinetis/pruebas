@@ -1,0 +1,21 @@
+# Archivo: apphosting.yaml
+# Configuración para que Firebase sepa cómo correr la aplicación Python/Django
+
+env:
+  # La configuración más crítica: le dice a Django dónde están los settings
+  - variable: DJANGO_SETTINGS_MODULE
+    value: "tu_proyecto.settings" 
+
+  # Las credenciales y otros secretos deben ir aquí, referenciando a Secret Manager
+  - variable: DJANGO_SECRET_KEY
+    secret: django-secret-key-prod 
+    availability:
+      - RUNTIME 
+      
+run:
+  scaling:
+    min_instances: 1
+    max_instances: 5 
+  resources:
+    cpu: 1000m
+    memory: 512Mi

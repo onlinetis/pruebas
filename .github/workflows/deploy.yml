@@ -1,0 +1,36 @@
+# Archivo: .github/workflows/deploy.yml
+name: Despliegue de Django en Firebase App Hosting
+
+on:
+  push:
+    branches:
+      - main # Cambia 'main' si usas otra rama principal
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout del código
+        uses: actions/checkout@v4
+
+      - name: Configurar Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip' # Usa cache para acelerar la instalación de dependencias
+
+      - name: Instalar dependencias
+        run: pip install -r requirements.txt
+
+      # ----------------------------------------------------
+      # Autenticación y Despliegue en Firebase App Hosting
+      # ----------------------------------------------------
+      - name: Despliegue en Firebase App Hosting
+        uses: firebase/app-hosting-github-action@v0 # Acción oficial para App Hosting
+        with:
+          # TOKEN DE FIREBASE: Se debe configurar en los Secrets del repositorio de GitHub 
+          # como FIREBASE_SERVICE_ACCOUNT_TU_ID_PROYECTO
+          repoToken: "${{ secrets.GITHUB_TOKEN }}" 
+          firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_TU_ID_PROYECTO }}"
+          projectId: "tu-id-de-proyecto-firebase" # Reemplaza con tu ID real
+          siteId: "tu-sitio-app-hosting" # Reemplaza con el ID de tu recurso de App Hosting
