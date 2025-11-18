@@ -32,5 +32,5 @@ jobs:
           # como FIREBASE_SERVICE_ACCOUNT_TU_ID_PROYECTO
           repoToken: "${{ secrets.GITHUB_TOKEN }}" 
           firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_TU_ID_PROYECTO }}"
-          projectId: "tu-id-de-proyecto-firebase" # Reemplaza con tu ID real
-          siteId: "tu-sitio-app-hosting" # Reemplaza con el ID de tu recurso de App Hosting
+          projectId: "onlinetis" # Reemplaza con tu ID real
+          siteId: "pruebas" # Reemplaza con el ID de tu recurso de App Hosting

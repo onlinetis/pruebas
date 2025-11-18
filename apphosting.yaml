@@ -8,14 +8,14 @@ env:
 
   # Las credenciales y otros secretos deben ir aquí, referenciando a Secret Manager
   - variable: DJANGO_SECRET_KEY
-    secret: django-secret-key-prod 
+    secret: pJYbd8shuashxd89USXHAH8f67sadh
     availability:
       - RUNTIME 
       
 run:
   scaling:
     min_instances: 1
-    max_instances: 5 
+    max_instances: 1
   resources:
-    cpu: 1000m
+    cpu: 1
     memory: 512Mi
