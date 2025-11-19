@@ -1,6 +1,22 @@
 # Archivo: apphosting.yaml
 # Configuración para que Firebase sepa cómo correr la aplicación Python/Django
 
+# apphosting.yaml
+build:
+  # Opcional, si quieres especificar un Dockerfile personalizado, si no, se usa el Buildpack
+  buildpack: python
+
+service:
+  # Define la ruta para el servicio web
+  target: web
+
+  # Configura los puertos y la asignación de tráfico
+  ports:
+    - port: 8080 # El puerto que el servicio escuchará (estándar para Gunicorn/Cloud)
+      target: 8080 # El puerto interno
+      handler: http
+
+
 env:
   # La configuración más crítica: le dice a Django dónde están los settings
   - variable: DJANGO_SETTINGS_MODULE
