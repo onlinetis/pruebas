@@ -8,7 +8,7 @@ env:
 
   # Las credenciales y otros secretos deben ir aquí, referenciando a Secret Manager
   - variable: DJANGO_SECRET_KEY
-    secret: pJYbd8shuashxd89USXHAH8f67sadh
+    secret: misecreto1@5
     availability:
       - RUNTIME 
       
